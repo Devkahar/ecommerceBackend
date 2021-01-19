@@ -14,6 +14,7 @@ const productRoutes = require('./routers/product');
 const cartRoutes = require('./routers/cart');
 const initialDataRoutes = require('./routers/admin/initData');
 const pageRoutes = require('./routers/admin/page');
+const addressRoutes = require('./routers/address');
 //environment variable or you can say constants
 env.config();
 
@@ -25,6 +26,7 @@ mongoose.connect(
         useNewUrlParser: true, 
         useUnifiedTopology: true,
         useCreateIndex: true,
+        useFindAndModify: false,
     }
 )
 .then(() => {
@@ -44,6 +46,7 @@ app.use('/api', productRoutes);
 app.use('/api', cartRoutes);
 app.use('/api',initialDataRoutes);
 app.use('/api',pageRoutes);
+app.use('/api',addressRoutes);
 // app.use('/api', adminRoutes);
 
 app.listen(process.env.PORT, () => {
